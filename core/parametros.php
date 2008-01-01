@@ -10,9 +10,7 @@
     $param['DRIVER']    = "mysql"; 
 	/**
 	  *NOMBRE PARA CONTROLADOR POR DEFECTO
-	  */
-	$param['DEFAULT_CONTROLLER'] = "";
-	$param['DEFAULT_METHOD']     = "";
+	  *
 	/**
 	  *VARIABLES PARA MANIPULACION DE URL Y
 	  *METODOS DE PETICIONES
