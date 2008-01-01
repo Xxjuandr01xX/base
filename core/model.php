@@ -77,11 +77,11 @@
 				return false;
 			}
 		}
-        public function update($table,$colums){
+        public function update($table, $colums, $condition){
 			/**
 			 * Funcion para Actualizar un registro en la db.
 			 */
-			$sql = update_string($table, $columns);
+			$sql = update_string($table, $columns, $condition);
 			$res = $this->conection->query($sql);
 			if($res){
 				return true;
@@ -108,6 +108,20 @@
                 $resultSet[] = $rowsObj;
             }
             return $resultSet;
+		}
+
+		public function delete($table, $condition){
+			/**
+			  * Funcion para Ejecutar una contsulta delete a un
+			  * registro de la DB
+			  */
+			$sql = string_delete($table, $condition);
+			$res = $this->conection->query($sql);
+			if($res){
+				return true;
+			}else{
+				return false;
+			}
 		}
     }
 

@@ -14,6 +14,25 @@
 			$this->render('citas/panel',["titulo" => "Citas Medicas"]);
 		}
 
+		public function verDetalleCita(){
+			$session = new Session();
+			$session->Init();
+			$cta = new CitasModel();
+			$per = new PersonasModel();
+			$id  = filter_input(INPUT_GET, 'cod');
+			$this->render('citas/detalleCita',[
+				"titulo" => "Detalle de la Cita",
+				"cita"   => $cta->getById($id),
+				"hist"   => $cta->getCitasHistById($id)
+			]);
+		}
+
+		public function formEdit(){
+			$id = filter_input(INPUT_POST, 'id');
+			$cta = new CitasModel();
+			echo json_encode($cta->getById($id));
+		}
+
 		public function addCita(){
 			$resp = '';
 			$cta = new CitasModel();
@@ -58,6 +77,17 @@
 			}
 		}
 
+		public function dropCita(){
+			$id = filter_input(INPUT_POST, 'id');
+			$cta = new CitasModel();
+			$resp = "";
+			if($cta->DropCta($id) == true){
+				$resp = "1";
+			}else{
+				$resp = "0";
+			}
+			echo $resp;
+		}
 		public function tableCitas(){
 			$session = new Session();
 			$session->Init();
@@ -91,20 +121,69 @@
 						'<td>'.$citas->getEstatusCita($data->id).'</td>';
 						if($_SESSION['rol'] == "1"){
 							$table .= '<td>'.
-								'<button class = "btn btn-sm btn-primary rounded-circle"><span class = "bi-eye-fill"></span></button>'.
-								'<button class = "btn btn-sm btn-warning rounded-circle"><span class = "bi-pencil-square"></span></button>'.
-								'<button class = "btn btn-sm btn-danger  rounded-circle"><span class = "bi-trash-fill"></span></button>'
+								'<button onclick = "openDetalleCita('.$data->id.');" class = "btn btn-sm btn-primary rounded-circle"><span class = "bi-eye-fill"></span></button>'.
+								'<button onclick = "editCita('.$data->id.');" class = "btn btn-sm btn-warning rounded-circle"><span class = "bi-pencil-square"></span></button>'.
+								'<button onclick = "delCita('.$data->id.');" class = "btn btn-sm btn-danger  rounded-circle"><span class = "bi-trash-fill"></span></button>'
 							.'</td></tr>';
 						}else{
 							$table .= '<td>'.
-								'<button class = "btn btn-sm btn-primary rounded-circle"><span class = "bi-pencil-square"></span></button>'.
-								'<button class = "btn btn-sm btn-warning rounded-circle"><span class = "bi-trash-fill"></span></button>'
+								'<button onclick = "openDetalleCita('.$data->id.');" class = "btn btn-sm btn-primary rounded-circle"><span class = "bi-pencil-square"></span></button>'.
+								'<button onclick = "editCita('.$data->id.');" class = "btn btn-sm btn-warning rounded-circle"><span class = "bi-trash-fill"></span></button>'
 							.'</td></tr>';
 						}
 				}
 				$table .= '<tbody></table>';
 				echo $table;
 			}
+		}
+
+		public function citaPacientes(){
+			$id  = filter_input(INPUT_POST, 'id');
+			$cta = new CitasModel();
+			$per = new PersonasModel();
+			$resp = "";
+			foreach ($cta->getById($id) as $cita){
+				foreach ($per->getAll() as $pac) {
+					if($cita->id_paciente_fk == $pac->id){
+						$resp = "<option value = '".$cta->id_paciente_fk."'>".$per->getNombreById($cita->id_paciente_fk)."</option>";
+					}else{
+						if($pac->id_tipo == 2){
+							$resp = "<option value = '".$pac->id."'>".$per->getNombreById($pac->id)."</option>";
+						}else{
+							$resp = ' ';
+						}
+					}
+				}
+			}
+			echo $resp;
+		}
+
+		public function citaMedicos(){
+
+			$id = filter_input(INPUT_POST, 'id');
+			$cta = new CitasModel();
+			$per = new PersonasModel();
+			$resp = "";
+			foreach ($cta->getById($id) as $cita){
+				foreach ($per->getAll() as $pac) {
+					if($cita->id_medico_fk == $pac->id){
+						$resp = "<option value = '".$cta->id_paciente_fk."'>".$per->getNombreById($cita->id_paciente_fk)."</option>";
+					}else{
+						if($pac->id_tipo == 1){
+							$resp = "<option value = '".$pac->id."'>".$per->getNombreById($pac->id)."</option>";
+						}else{
+							$resp = ' ';
+						}
+					}
+				}
+			}
+			echo $resp;	
+		}
+
+
+		public function updateCita(){
+			$id = filter_input(INPUT_POST, 'id');
+			$cta = new CitasModel();
 		}
 		
 	}

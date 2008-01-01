@@ -97,6 +97,26 @@
 		$sql = $inicio.$where;
 		return $sql;
 	}
+
+	function string_delete($table,$condition){
+		/**
+		  * Funcion para generar string de consulta para
+		  * DELETE 
+		  */
+
+		$inicio = "DELETE FROM $table WHERE ";
+		$fin    = "";
+		$x = 0;
+		foreach ($condition as $campo => $valor) {
+			$x++;
+			if($x == count($condition)){
+				$fin = $campo." = ".$valor;
+			}else{
+				$fin .= $campo." = ".$valor.", ";
+			}
+		}
+		return $inicio.$fin;
+	}
 	
 
 

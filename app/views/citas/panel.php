@@ -60,6 +60,29 @@
         </div>
       </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal rounded-0 fade" id="modal-edit-cita" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header bg-primary text-center rounded-0">
+            <h5 class="modal-title  text-white" id="exampleModalLabel">Acualizar Informacion de Cita</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div id = 'edit_cita_container'></div>
+
+            <div class="row clearfix d-flex justify-content-center">
+              <div class="col-md-10">
+                <button class="btn btn-warning rounded-0 w-100 mt-3" id = "btn-edit"><span class="bi-pencil"></span> Actualizar</button>    
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/system/jsCitasPanel.js"></script>
   </body>
