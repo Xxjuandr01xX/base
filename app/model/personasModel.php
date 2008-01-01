@@ -58,6 +58,43 @@
 				"id" => "'$id'"
 			]);
 		}
+		public function dropMedico($id){
+			$persona = $this->delete('med_personas',[
+				"id" => "'$id'"
+			]);
+
+			if($persona == true){
+				return $this->delete('med_usuarios',[
+					"id_persona" => "'$id'"
+				]);
+			}
+		}
+
+		public function updateMedico($id, $nom, $ape , $ced, $cel, $email, $sex, $fecha, $dir, $user, $pass, $rol){
+			$persona = $this->update('med_personas',[
+				"nombre"    => "'$nom'",
+				"ced_ide" 	=> "'$ced'",
+				"nombre" 	=> "'$nom'",
+				"apellido"  => "'$ape'",
+				"correo"    => "'$email'",
+				"telefono"  => "'$cel'",
+				"direccion" => "'$dir'",
+				"sexo" 		=> "'$sex'",
+				"fec_nac"   => "'$fecha'"
+			],[
+				"id" => "'$id'"
+			]);
+			if($persona){
+				return $this->update('med_usuarios',[
+					"username"  	=> "'$user'",
+					"pwd"  			=> "PASSWORD('$pass')",
+					"rol" 			=> "'$rol'"
+				],[
+					"id_persona"   => "'$id'"
+				]);
+			}
+		}
+
 		public function insertMedico($nom, $ape , $ced, $cel, $email, $sex, $fec_nac, $dir, $user, $pass, $rol){
 			$persona = $this->insert('med_personas',[
 				"id"        => "NULL",

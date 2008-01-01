@@ -4,6 +4,12 @@
 	 		parent::__construct();
 	 	}
 
+	 	public function getByIdPersona($id){
+	 		return $this->get_where('med_usuarios',[
+	 			"id_persona" => "'$id'"
+	 		]);
+	 	}
+
 	 	public function getAll(){
 	 		return $this->get_all('med_usuarios');
 	 	}

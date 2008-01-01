@@ -14,7 +14,7 @@
                 <h4><?php echo $titulo; ?></h4>
               </div>
               <div class="card-body">
-               <?php foreach($data as $pac){?>
+               <?php foreach($dataPersona as $pac){?>
                <div class="row clearfix d-flex justify-content-center mb-2">
                  <div class="col-md-5">
                    <div class="form-group">
@@ -103,15 +103,58 @@
                  </div>
                </div>
 
+               <?php foreach($dataUsuario  as $user){ ?>
+                <div class="row clearfix d-flex justify-content-center mb-3">
+                 <div class="col-md-5">
+                   <div class="form-group">
+                     <div class="input-group">
+                      <label for="" class="input-group-text">
+                        <span class="bi-person text-primary"></span>
+                      </label>
+                      <input value = "<?php echo $user->username; ?>" type="text" id="username" class="form-control" placeholder="Ingrese su nombre usuario">
+                     </div>
+                   </div>
+                 </div>
+                 <div class="col-md-5">
+                   <div class="form-group">
+                     <div class="input-group">
+                       <label for="" class="input-group-text"><span class="bi-lock-fill text-primary"></span></label>
+                       <input  type="password"  id="password" class="form-control" placeholder="Contraseña de usuario">
+                     </div>
+                   </div>
+                 </div>
+               </div>
+
+               <div class="row clearfix d-flex justify-content-center mb-3">
+                 <div class="col-md-10">
+                   <div class="form-group">
+                      <div class="input-group">
+                        <label for="" class="input-group-text"><span class="bi-check text-primary"></span></label>
+                        <select  id="rol" class="form-control">
+                          <?php foreach($rol as $roles){?>
+                            <?php if($roles->id != 3){ ?>
+                              <?php if($user->rol == $roles->id) { ?>
+                                <option value="<?php echo $roles->id; ?>"><?php echo $roles->des_rol;?></option>
+                              <?php } else{ ?>
+                                <option value="<?php echo $roles->id; ?>"><?php echo $roles->des_rol;?></option>
+                              <?php } ?>
+                            <?php }else{ } ?>
+                          <?php } ?>
+                        </select>
+                      </div>
+                   </div>
+                 </div>
+               </div>
+             <?php } ?>
                <div class="row clearfix d-flex justify-content-center mb-3 mt-3">
                   <div class="col-md-5">
-                      <button  onclick = "openPacientes();" class="btn btn-primary rounded-0 w-100">
-                        <span class="bi-home"></span> Ir al Pacientes
+                      <button  onclick = "openMedicos();" class="btn btn-primary rounded-0 w-100">
+                        <span class="bi-home"></span> Ir al Medicos
                       </button>
                   </div>
 
                   <div class="col-md-5">
-                      <button onclick="editarPaciente(<?php echo $_GET['cod'];?>);"  class="btn btn-warning rounded-0 w-100">
+                      <button onclick="editarMedico(<?php echo $_GET['cod'];?>);"  class="btn btn-warning rounded-0 w-100">
                         <span class="bi-pencil-square"></span> Editar
                       </button>
                   </div>
@@ -129,7 +172,7 @@
     <div id="alert-container"></div>
 
     <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/system/jsPacientes.js"></script>
+    <script src="assets/system/jsMedicos.js"></script>
 
     <script>
       var sexo = '<?php echo $pac->sexo;?>';
@@ -140,7 +183,6 @@
 
         document.getElementById('input-female').checked = true;
       }
-      toggleSwitchInputs();
       document.getElementById('dir').value = "<?php echo $pac->direccion; ?>";
     </script>
   </body>

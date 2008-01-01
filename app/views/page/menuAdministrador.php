@@ -19,7 +19,7 @@
           </li>
 
            <li class="nav-item ">
-            <a class="nav-link active text-light" aria-current="page" href="?op=Gerencias/listado">
+            <a class="nav-link active text-light" aria-current="page" href="?op=Pagos/index">
               <span data-feather="home"></span>
               <span class="bi-cash-coin"></span> Pagos
             </a>

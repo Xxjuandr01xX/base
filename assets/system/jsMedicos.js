@@ -1,4 +1,7 @@
 $(document).ready(function(){ 
+
+	setDataTableMedicos();
+
 	$("#btn-add-medico").on('click',function(e){
 		e.preventDefault();
 		registrarNuevoMedico();
@@ -9,11 +12,14 @@ $(document).ready(function(){
 	setInputPlugins();
 });
 
+function openMedicos(){
+	window.location.href = "?op=Medicos/index";
+}
+
 function setInputPlugins(){
 	$("#cell_input").inputmask({
 		"mask" : "(9999)-9999999"
 	});
-
 	$("#fec_nac").bootstrapMaterialDatePicker({
 		"format" : "DD/MM/YYYY",
 		"time"   : false
@@ -23,17 +29,16 @@ function setInputPlugins(){
 	});
 }
 
+
 function setDataTableMedicos(){
 	$.ajax({
 		"url"      : "?op=Medicos/dataTableMedicos",
 		"method"   : "POST",
 		beforeSend : function(){
-			setBsAlert('al',true,'primary','Procesando...!');
 		},
 		success    : function(data){
-			$("#dataTable-container").html(data);
-			$("#medicos-dataTable").dataTable();
-			$("#al").html(" ");
+			$("#datatable-container").html(data);
+			$("#table-medicos").dataTable();
 		}
 	})
 }
@@ -44,6 +49,53 @@ function openNewMedico(){
 
 function getCheckedValue(){
 	return document.querySelector('input[type=checkbox]:checked').value;
+}
+
+function eliminarMedico(id){
+	$.post('?op=Medicos/eliminarMedico',{"id":id},function(resp){
+		if(resp == '1'){
+			swal({
+				"title" : "Listo !",
+				"text"  : "Operacion Realizada con Exito !",
+				"type"  : "success"
+			});
+			setDataTableMedicos();
+		}else{
+			swal({
+				"title" : "Oop´s",
+				"text"  : "Error al Realizar Operacion",
+				"type"  : "error"
+			});
+		}
+	});
+}
+
+function formEditar(id){
+	window.location.href="?op=Medicos/editar&cod="+id;
+}
+
+function editarMedico(id){
+	$.ajax({
+		"method" : "POST",
+		"url"    :  "?op=Medicos/editarMedico",
+		"data"   : {
+			"id"    : id,
+			"nom" 	: $("#nom").val(),
+			"ape" 	: $("#ape").val(),
+			"ced" 	: $("#ced_ide").val(),
+ 			"cell"  : $("#cell_input").val(),
+			"mail"  : $("#email").val(),
+			"sex" 	: getCheckedValue(),
+			"nac" 	: $("#fec_nac").val(),
+ 			"dir" 	: $("#dir").val(),
+ 			"user" 	: $("#username").val(),
+ 			"pass" 	: $("#password").val(),
+ 			"rol" 	: $("#rol").val()
+		},
+		success     : function(resp){
+			console.log(resp);
+		}
+	});
 }
 
 function registrarNuevoMedico(){
