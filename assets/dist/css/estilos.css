@@ -1,0 +1,50 @@
+.material-shadow{
+	box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+/**
+* Estilos Material Date Picker.
+*/
+.bg-mtd-blue{
+	background-color: #2A95F4;
+}
+.dtp-header{
+	background-color: #0e71b3 !important;
+}
+.dtp-date{
+	background-color: #478fbe !important;
+}
+.dtp-select-month-before{
+	color: #fff !important;
+}
+.dtp-select-month-after{
+	color: #fff !important;
+}
+.dtp-select-year-before{
+	color: #fff !important;
+}
+.dtp-select-year-after{
+	color: #fff !important;	
+}
+.dtp-actual-year{
+	color: #fff !important;
+}
+.selected{
+	color: #fff !important;
+	background-color: #478fbe !important;
+}
+/********************************************/
+
+/**
+* Personalizacion 
+*/
+
+
+
+main{
+	background-color:#fff !important;
+}
+
+.nav-link:hover{
+	color: #2A95F4 !important;
+}

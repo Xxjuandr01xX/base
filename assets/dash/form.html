@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>Dashboard Template · Bootstrap v5.0</title>
+    <!--<link rel="stylesheet" href="../assets/materialize/css/materialize.min.css" />-->
+    <!--<script type="text/javascript" src="../assets/materialize/js/materialize.min.js"></script>-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="text/javascript" src="../assets/dist/js/jquery.min.js"></script>
+    <!--Custom CSS-->
+    <link rel="stylesheet" href="../assets/dist/css/estilos.css">
+    <!--DataTable-->
+    <link rel="stylesheet" href="../assets/plugins/DataTables/datatables.min.css">
+    <script type="text/javascript" src="../assets/plugins/DataTables/datatables.min.js"></script>
+    <!--plugins-->
+    <script type="text/javascript" src="../assets/plugins/momentjs/moment.js"></script>
+    <link rel="stylesheet" href="../assets/plugins/icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../assets/plugins/datepicker/css/bootstrap-material-datetimepicker.css">
+    <link rel="stylesheet" href="../assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css">
+    <script type="text/javascript" src="../assets/plugins/datepicker/js/bootstrap-material-datetimepicker.js"></script>
+    <script type="text/javascript" src="../assets/plugins/Inputmask/dist/jquery.inputmask.min.js"></script>
+    <script type="text/javascript" src="../assets/plugins/sweetalert/sweetalert/sweetalert2.all.min.js"></script>
+    <script type="text/javascript" src="../assets/plugins/bootstrap-notify/bootstrap-notify.js"></script>
+    <script type="text/javascript" src="../assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+    <script type="text/javascript" src="../assets/plugins/"></script>
+    <script type="text/javascript" src="funciones.js"></script>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="dashboard.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
+    <!-- Custom styles for this template -->
+
+</head>
+
+<body>
+
+    <header class="navbar navbar-dark sticky-top bg-mtd-blue flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#"><strong><span class="bi-list"></span> Company name</strong></a>
+        <hr>
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-nav">
+            <div class="nav-item text-nowrap">
+            </div>
+        </div>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item border-bottom">
+                            <a class="nav-link active" aria-current="page" href="#">
+                                <span data-feather="home"></span>
+                                <strong><span class="bi-circle"></span> Dashboard</strong>
+                            </a>
+                        </li>
+                        <li class="nav-item border-bottom">
+                            <a class="nav-link" href="#">
+                                <span data-feather="file"></span>
+                                <strong><span class="bi-circle"></span> Orders</strong>
+                            </a>
+                        </li>
+                        <li class="nav-item border-bottom">
+                            <a class="nav-link" href="#">
+                                <span data-feather="shopping-cart"></span>
+                                <strong><span class="bi-circle"></span> Products</strong>
+                            </a>
+                        </li>
+                        <li class="nav-item border-bottom">
+                            <a class="nav-link" href="#">
+                                <span data-feather="users"></span>
+                                <strong><span class="bi-circle"></span> Customers</strong>
+                            </a>
+                        </li>
+                        <li class="nav-item border-bottom">
+                            <a class="nav-link" href="#">
+                                <span data-feather="bar-chart-2"></span>
+                                <strong><span class="bi-circle"></span> Reports</strong>
+                            </a>
+                        </li>
+                        <li class="nav-item border-bottom">
+                            <a class="nav-link" href="#">
+                                <span data-feather="layers"></span>
+                                <strong><span class="bi-circle"></span> Integrations</strong>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+            </nav>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 ">
+                </div>
+
+
+
+                <!--contenido-->
+                <div class="container-fluid">
+                    <div class="row clearfix d-flex justify-content-center">
+                        <div class="col-md-10">
+                            <h3> CRUD </h3>
+                            <hr>
+                            <div class="card shadow rounded-0">
+                                <div class="card-header text-white" style="background-color: #2A95F4;">
+                                    <h4>Formulario de Contacto</h4>
+                                </div>
+
+                                <div class="card-body">
+                                    <div id="form-container"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--contenido-->
+            </main>
+        </div>
+    </div>
+    <!--MODAL-->
+    
+    <div id="alert-container"></div>
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            const section_basicos = sectionInput('nombre_pass');
+            const section_contact = sectionInput('contact');
+            const submit          = sectionInput('submit');
+            const setions         = [section_basicos, section_contact,submit];
+            
+            formInit('form-container', 'contactForm', setions);
+            addCols('nombre_pass',function(){
+                return '<div class = "col-md-4">'+
+                    setInputText({
+                        "id"     : "nombre",
+                        "icon"   : "person",
+                        "type"   : "text",
+                        "holder" : "Ingrese su Nombre"
+                    })+
+                '</div>'+
+                '<div class = "col-md-4">' +
+                    setInputText({
+                        "id"     : "password",
+                        "icon"   : "lock",
+                        "type"   : "password",
+                        "holder" : "Ingrese su Contraseña"
+                    }) +
+                '</div>'
+            });
+            addCols('contact',function(){
+                return '<div class = "col-md-4">'+
+                        setInputText({
+                            "id"     :"email",
+                            "icon"   :"envelope",
+                            "type"   :"mail",
+                            "holder" :"E-mail"
+                        })+
+                '</div>'+
+                       '<div class = "col-md-4">' +
+                        setInputText({
+                            "id"     :"telefono",
+                            "icon"   :"phone",
+                            "type"   :"text",
+                            "holder" :"(9999) - 9999999"
+                        })+    
+                '</div>';
+            });
+            addCols('submit', function(){
+                return '<div class = "col-md-8">'+
+                            setBtnSubmit('btn-add',{
+                                "text"  : "Aceptar",
+                                "color" : "success"
+                            })+
+                    '</div>';
+            });
+            $("#btn-add").on('click', function(e){
+                e.preventDefault();
+                alert("hola mundo");
+            });
+            $("#telefono").inputmask({"mask" : "(9999) - 9999999"});
+        });
+    </script>
+
+
+</body>
+
+</html>

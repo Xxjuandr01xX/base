@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>Dashboard Template · Bootstrap v5.0</title>
+    <!--<link rel="stylesheet" href="../assets/materialize/css/materialize.min.css" />-->
+    <!--<script type="text/javascript" src="../assets/materialize/js/materialize.min.js"></script>-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="text/javascript" src="../assets/dist/js/jquery.min.js"></script>
+    <!--Custom CSS-->
+    <link rel="stylesheet" href="../assets/dist/css/estilos.css">
+    <!--DataTable-->
+    <link rel="stylesheet" href="../assets/plugins/DataTables/datatables.min.css">
+    <script type="text/javascript" src="../assets/plugins/DataTables/datatables.min.js"></script>
+    <!--plugins-->
+    <script type="text/javascript" src="../assets/plugins/momentjs/moment.js"></script>
+    <link rel="stylesheet" href="../assets/plugins/icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../assets/plugins/datepicker/css/bootstrap-material-datetimepicker.css">
+    <link rel="stylesheet" href="../assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css">
+    <script type="text/javascript" src="../assets/plugins/datepicker/js/bootstrap-material-datetimepicker.js"></script>
+    <script type="text/javascript" src="../assets/plugins/Inputmask/dist/jquery.inputmask.min.js"></script>
+    <script type="text/javascript" src="../assets/plugins/sweetalert/sweetalert/sweetalert2.all.min.js"></script>
+    <script type="text/javascript" src="../assets/plugins/bootstrap-notify/bootstrap-notify.js" ></script>
+    <script type="text/javascript" src="../assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+    <script type="text/javascript" src="../assets/plugins/"></script>
+    <script type="text/javascript" src="funciones.js"></script>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="dashboard.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    <!-- Custom styles for this template -->
+    
+  </head>
+  <body>
+    
+<header class="navbar navbar-dark sticky-top bg-mtd-blue flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#"> <strong><span class="bi-list"></span> Company name </strong></a>
+  <hr>
+  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  
+  <div class="navbar-nav">
+    <div class="nav-item text-nowrap">
+      <div id = "user-dropdown"></div>
+    </div>
+  </div>
+</header>
+
+<div class="container-fluid">
+  <div class="row">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <div class="position-sticky pt-3">
+        <ul class="nav flex-column">
+          <li class="nav-item border-bottom">
+            <a class="nav-link  text-secondary active" aria-current="page" href="#">
+              <span data-feather="home"></span>
+              <strong><span class = "bi-circle"></span> Dashboard</strong>
+            </a>
+          </li>
+          <li class="nav-item border-bottom">
+            <a class="nav-link text-secondary" href="#">
+              <span data-feather="file"></span>
+              <strong><span class = "bi-circle"></span> Orders</strong>
+            </a>
+          </li>
+          <li class="nav-item border-bottom">
+            <a class="nav-link text-secondary" href="#">
+              <span data-feather="shopping-cart"></span>
+              <strong><span class = "bi-circle"></span> Products</strong>
+            </a>
+          </li>
+          <li class="nav-item border-bottom">
+            <a class="nav-link text-secondary" href="#">
+              <span data-feather="users"></span>
+              <strong><span class = "bi-circle"></span> Customers</strong>
+            </a>
+          </li>
+          <li class="nav-item border-bottom">
+            <a class="nav-link text-secondary" href="#">
+              <span data-feather="bar-chart-2"></span>
+              <strong><span class = "bi-circle"></span> Reports</strong>
+            </a>
+          </li>
+          <li class="nav-item border-bottom">
+            <a class="nav-link text-secondary" href="#">
+              <span data-feather="layers"></span>
+              <strong><span class="bi-box-arrow-in-left"></span> Salir</strong>
+            </a>
+          </li>
+        </ul>
+
+      </div>
+    </nav>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+      </div>
+
+      <!--contenido-->
+      <div class="container-fluid">
+        <div class="row clearfix d-flex justify-content-center">
+          <div class="col-md-10">
+            <h3> CRUD </h3>
+            <hr>
+            <nav class="nav justify-content-end">
+              <li class="nav-item">
+                <div id="dropdown-container"></div>
+              </li>
+
+              <li class="nav-item">
+                <a href = "#" id = "btn-add" class="nav-link btn btn-primary rounded-0 shadow text-white"> <span class="bi-plus"></span> Agregar</a>
+              </li>
+            </nav>
+            <br>
+            <br>
+            <div class="card shadow rounded-0">
+              <div class="card-header text-white" style="background-color: #2A95F4;">
+                <h4>Titulo de la Seccion</h4>
+              </div>
+          
+              <div class="card-body">
+                
+                <div class="table-responsive">
+                  <table class="table table-stripped table-hover table-bordered w-100" id = "table">
+                    <thead class="text-white"  style="background-color: #2A95F4;">
+                      <tr>
+                        <td>Nombre</td>
+                        <td>Apellido</td>
+                        <td>Cedula</td>
+                        <td>Correo</td>
+                        <td>Telefono</td>
+                        <td>Acciones</td>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr>
+                        <td>Juan D</td>
+                        <td>Rincon U</td>
+                        <td>23.445.978</td>
+                        <td>jd.rincon021@gmail.com</td>
+                        <td>04146801859</td>
+                        <td class="text-center">
+                          <a href="#" class="btn btn-warning text-white shadow btn-sm rounded-circle"><span class="bi-pencil"></span></a>
+                          <a href="#" class="btn btn-danger text-white shadow btn-sm rounded-circle"><span class="bi-trash"></span></a>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>Juan D</td>
+                        <td>Rincon U</td>
+                        <td>23.445.978</td>
+                        <td>jd.rincon021@gmail.com</td>
+                        <td>04146801859</td>
+                        <td class="text-center">
+                          <a href="#" class="btn btn-warning text-white shadow btn-sm rounded-circle"><span class="bi-pencil"></span></a>
+                          <a href="#" class="btn btn-danger text-white shadow btn-sm rounded-circle"><span class="bi-trash"></span></a>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>Juan D</td>
+                        <td>Rincon U</td>
+                        <td>23.445.978</td>
+                        <td>jd.rincon021@gmail.com</td>
+                        <td>04146801859</td>
+                        <td class="text-center">
+                          <a href="#" class="btn btn-warning text-white shadow btn-sm rounded-circle"><span class="bi-pencil"></span></a>
+                          <a href="#" class="btn btn-danger text-white shadow btn-sm rounded-circle"><span class="bi-trash"></span></a>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>Juan D</td>
+                        <td>Rincon U</td>
+                        <td>23.445.978</td>
+                        <td>jd.rincon021@gmail.com</td>
+                        <td>04146801859</td>
+                        <td class="text-center">
+                          <a href="#" class="btn btn-warning text-white shadow btn-sm rounded-circle"><span class="bi-pencil"></span></a>
+                          <a href="#" class="btn btn-danger text-white shadow btn-sm rounded-circle"><span class="bi-trash"></span></a>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>Juan D</td>
+                        <td>Rincon U</td>
+                        <td>23.445.978</td>
+                        <td>jd.rincon021@gmail.com</td>
+                        <td>04146801859</td>
+                        <td class="text-center">
+                          <a href="#" class="btn btn-warning text-white shadow btn-sm rounded-circle"><span class="bi-pencil"></span></a>
+                          <a href="#" class="btn btn-danger text-white shadow btn-sm rounded-circle"><span class="bi-trash"></span></a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+          
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--contenido-->
+    </main>
+  </div>
+</div>
+    <!--MODAL-->
+    <!-- Modal -->
+    <div class="modal fade rounded-0" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: #2A95F4;">
+            <h5 class="modal-title text-white" id="exampleModalLabel">Modal title</h5>
+          </div>
+          <div class="modal-body">
+            <h5 class="text-center">Formulario Basico</h5>
+            <br>
+            <h6 class="text-center">Text</h6>
+            <div class="row clearfix d-flex justify-content-center">
+              <div class="col-md-4">
+                <div class="input-group">
+                  <label for="" class="input-group-text rounded-0"> <span class="bi-person"></span></label>
+                  <input type="text" name="" id="" class="form-control rounded-0">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="input-group">
+                  <label for="" class="input-group-text rounded-0"> <span class="bi-lock"></span></label>
+                  <input type="password" name="" id="" class="form-control rounded-0">
+                  <label for="" class="input-group-text rounded-0" id="pass-view"> <span class="bi-eye"></span></label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row clearfix d-flex justify-content-center mt-2">
+              <div class="col-md-8">
+                <div class="input-group">
+                  <label for="" class="input-group-text rounded-0">
+                    <span class="bi-check"></span>
+                  </label>
+                  <select id="" class="form-select rounded-0">
+                    <option value="0">-- Seleccionar --</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row clearfix d-flex justify-content-center mt-2">
+              <div class="col-md-8">
+                <div class="input-group">
+                  <label for="" class="input-group-text rounded-0">
+                    <b><span class="bi-clock"></span></b> 
+                  </label>
+                  <input type="text"  id="date-input" class="form-control rounded-0">
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" id = "alert-pb" class="btn btn-primary w-100 rounded-0 shadow">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--MODAL-->
+
+    <div id="alert-container"></div>
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      $(document).ready(function(){
+       /** $("#btn-add").on('click',function(e){
+          e.preventDefault();
+          set_visible_modal('exampleModal',true);
+        });*/
+
+        $("#alert-pb").on('click',function(){
+          swal({
+            "title" : 'Oop´s',
+            "text"  : "Esto es una Prueba para Funcionalidad",
+            "type"  : "success"
+          });
+        });
+
+        $("#table").DataTable();
+
+        /*$("#date-input").bootstrapMaterialDatePicker({
+          "format"     : "DD/MM/YYYY"
+        });*/
+
+        /*$("#date-input").focus(function(e){
+          e.preventDefault();
+          setBsAlert('alert-container',true,'primary','Esto es una Prueba');
+        });*/
+
+        $("#date-input").focus(function(e){
+          e.preventDefault();
+          setAlertToast('alert-container',true,{
+            'mensaje': 'Esto es una Prueba de Toast con Bootstrap 5!!!',
+            'color'  : 'warning',
+            'icon'   : 'pencil'
+          });
+        });
+
+        $("#btn-add").on('click',function(e){
+          e.preventDefault();
+          setAlertModal('alert-container',true,{
+            'mensaje': 'Esta es una alerta creara con Bootstrap!!!',
+            'icon'   : 'trash',
+            'color'  : 'danger',
+            'btn'    : 'cerrar',
+            'event'  : 'close'
+          });
+        });
+
+
+      });
+    </script>
+
+    
+  </body>
+</html>

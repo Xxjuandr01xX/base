@@ -7,7 +7,7 @@
         private $charset;   
         private $driver;
         
-        function __construct(){
+        public function __construct(){
             require_once 'parametros.php';
             $this->host     = $param['HOST'];       
             $this->user     = $param['USER'];
@@ -17,13 +17,13 @@
             $this->driver   = $param['DRIVER'];
         }
 
-        public static function Link(){
+        public function Link(){
 			try{
-				$mysqli = new mysqli(self::host,self::user,self::pass,self::db);
+				$mysqli = new mysqli($this->host,$this->user,$this->pass,$this->db);
 				mysqli_set_charset($mysqli,'utf-8');
 				return $mysqli;
 			}catch(Exception $e){
-				echo "[MENSAGE:===>] ".$e->getMensage."</br> [LINE ==>] ".$e->getLine();
+				echo "[MENSAGE:===>] ".$e->getMensage()."</br> [LINE ==>] ".$e->getLine();
 			}
         }
         

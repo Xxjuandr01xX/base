@@ -27,9 +27,9 @@
 	  * - MODELOS.
 	  */
 	$param['BASE_PATH']        = "";
-	$param['CONTROLLERS_PATH'] = "";
-	$param['VIEWS_PATH']       = "";
-	$param['MODEL_PATH']       = "";
+	$param['CONTROLLERS_PATH'] = "app/controller/";
+	$param['VIEWS_PATH']       = "app/views/";
+	$param['MODEL_PATH']       = "app/model/";
 
 	define('__APPNAME__','NOMBRE DE MI APP');
 ?>
