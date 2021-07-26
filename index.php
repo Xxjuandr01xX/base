@@ -14,7 +14,7 @@
 		$controller = $op[0];
 		$accion     = $op[1];
 		$controller_path = $param['CONTROLLERS_PATH'].$controller.'.php';
-		if(!file_exists($controller_path)){
+		if(!file_exists($controller_path) || empty($_SESSION)){
 			require_once $param['CONTROLLERS_PATH'].'Login.php';
 		}else{
 			require_once $controller_path;

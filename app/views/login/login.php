@@ -7,5 +7,10 @@
 </head>
 <body>
 	<h3><?php echo $titulo; ?></h3>
+	<ul>
+		<?php foreach($contactos as $con) { ?>
+			<li><a><?php echo $con->nombre." ".$con->apellido; ?></a></li>
+		<?php } ?>
+	</ul>
 </body>
 </html>

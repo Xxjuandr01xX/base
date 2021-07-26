@@ -16,8 +16,8 @@
 			return $_SESSION;
 		}
 
-		public function setUserData($data){
-			$this->userData = $_SESSION;
+		public function index($index){
+			return $_SESSION[$index];
 		}
 
 	}

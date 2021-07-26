@@ -8,13 +8,12 @@
         private $driver;
         
         public function __construct(){
-            require_once 'parametros.php';
-            $this->host     = $param['HOST'];       
-            $this->user     = $param['USER'];
-            $this->pass     = $param['PASS'];
-            $this->db       = $param['DB'];
-            $this->charset  = $param['CHARSET'];
-            $this->driver   = $param['DRIVER'];
+            $this->host     = "localhost";       
+            $this->user     = "root";
+            $this->pass     = "";
+            $this->db       = "prueba";
+            $this->charset  = "utf-8";
+            $this->driver   = "mysqli";
         }
 
         public function Link(){
