@@ -108,16 +108,16 @@ let setFormAddCita = () =>{
 	  });
 
 	 $("#hor_cta").bootstrapMaterialDatePicker({
-	      "format"     : "HH:MM:SS",
+	      "format"     : "HH:MM:00",
 	      "date"       : false,
 	      "clearButton": false,
-	      "cancelText" : " ",
+	      "cancelText" : "atras",
 	      "okText"     : "Aceptar",
 	      "monthPicker" : false
 	  });
 
 	$("#cod").inputmask({
-		"mask" : "CT-999999"
+		"mask" : "CT-9999999"
 	})
 }
 
@@ -141,6 +141,27 @@ let registrarNuevaCita = () => {
 
 	$.post('?op=Citas/addCita', data, function(resp){
 		console.log(resp);
+		if(resp == '1'){
+			swal({
+				"title" : 'Listo!',
+				"type"  : 'success',
+				"text"  : 'Operacion Realizada con Exito !'
+			});
+		}else if(resp == '0'){
+			swal({
+				"title" : 'Oop´s',
+				"type"  : 'error',
+				"text"  : 'Error al Realizar Operacion !'
+			});
+		}else if(resp == 'duplicate'){
+			swal({
+				"title" : 'Oop´s',
+				"type"  : 'warning',
+				"text"  : 'Codigo de Cita Duplicado'
+			});
+		}else{
+			console.log(resp);
+		}
 	});
 }
 

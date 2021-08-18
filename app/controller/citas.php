@@ -15,18 +15,19 @@
 		}
 
 		public function addCita(){
-			
-			echo insert_string('med_citas',[
-				"id" 			 => 'NULL',
-				"cod_cita"  	 => "'CTA-00001'",
-				"id_paciente_fk" => "'1'",
-				"id_medico_fk" 	 => "'2'",
-				"fec_cita" 		 => "'1990-01-01'",
-				"hor_cita" 		 => "'00:00:00'",
-				"motivo" 		 => "'ESTO ES UNA PRUEBA SOLAMENTE'"
-			]);
-
-			print_r($_POST);
+			$resp = '';
+			$cta = new CitasModel();
+			$cod = $_POST['codigo'];
+			if($cta->verificarCorrelativo('"$cod"') == true){
+				if($cta->ctaInsert($_POST['codigo'],$_POST['selectPacientes'],$_POST['selectMedicos'],dateToSql($_POST['fecha']),$_POST['hora'],$_POST['motivo']) == true){
+					$resp = '1';
+				}else{
+					$resp = '0';
+				}
+			}else{
+				$resp = 'duplicate';
+			}
+			echo $resp;
 		}
 
 		public function getPacientesList(){

@@ -26,7 +26,32 @@
 		}
 
 		public function ctaInsert($cod,$paciente,$medico,$fec,$hor,$mot){
-			
+			$sql = "INSERT INTO med_citas VALUES (NULL,'".$cod."','".$paciente."','".$medico."','".$fec."','00:00:00','".$mot."')";
+			$res = $this->get_conection()->query($sql);
+			if($res){
+				$id      = mysqli_insert_id($this->get_conection());
+				$fecha   = date('Y-m-d');
+				$sql_II  = "INSERT INTO med_citas_hist VALUES (NULL,'$id','$fecha',1)";
+				$res_II  = $this->get_conection()->query($sql_II);
+				if($res_II){
+					return true;
+				}else{
+					return false;
+				}
+			}else{
+				return false;
+			}
+		}
+
+		public function verificarCorrelativo($cod_cta){
+			$respuesta = NULL;
+			$cod = $this->get_where('med_citas',["cod_cita" => $cod_cta]);
+			if(count($cod) == 0){
+				$respuesta = true;
+			}else{
+				$respuesta = false;
+			}
+			return $respuesta;
 		}
 
 

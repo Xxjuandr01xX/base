@@ -7,7 +7,21 @@
           <li class="nav-item">
             <a class="nav-link active text-light" aria-current="page" href="?op=Proyectos/listado">
               <span data-feather="home"></span>
-              <span class="bi-person"></span> Pacientes
+              <span class="bi-person"></span> Pacientes <span class="bi-toggle2-off"></span>
+            </a>
+          </li>
+
+           <li class="nav-item ">
+            <a class="nav-link active text-light" aria-current="page" href="?op=Gerencias/listado">
+              <span data-feather="home"></span>
+              <span class="bi-person"></span> Medicos <span class="bi-toggle2-off"></span>
+            </a>
+          </li>
+
+           <li class="nav-item ">
+            <a class="nav-link active text-light" aria-current="page" href="?op=Gerencias/listado">
+              <span data-feather="home"></span>
+              <span class="bi-cash-coin"></span> Pagos
             </a>
           </li>
 
@@ -21,14 +35,14 @@
           <li class="nav-item ">
             <a class="nav-link active text-light" aria-current="page" href="?op=Cfg/Home">
               <span data-feather="home"></span>
-              <span class="bi-wrench"></span> Configuracion
+              <span class="bi-wrench"></span> Configuracion <span class="bi-toggle2-off"></span>
             </a>
           </li>
           
           <li class="nav-item ">
-            <a class="nav-link" href="?op=Login/logOut">
+            <a class="nav-link active text-light" href="?op=Login/logOut">
               <span data-feather="layers"></span>
-              <span class="bi-box-arrow-left"></span> Salir
+              <span class="bi-box-arrow-left"></span> Cerrar Session
             </a>
           </li>
         </ul>
