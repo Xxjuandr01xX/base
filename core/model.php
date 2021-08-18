@@ -52,23 +52,24 @@
 			}
 			return $resultSet;
 		}
-        public function select($table,$colums){
+        public function select($table,$camp,$colums){
 			/**
 			 * Funcion para realizar consulta select aplicando clausula where.
 			 */
-			$sql       = select_string($table, $columns);
+			$sql       = select_string($table, $camp, $colums);
 			$resultset = [];
 			$res = $this->conection->query($sql);
 			while($obj = $res->fetch_object()){
 				$resultSet[] = $obj;
 			}
+			mysqli_free_result($res);
 			return $resultSet;
 		}
         public function insert($table,$colums){
 			/**
 			 * Funcion para insertar un registro en la db.
 			 */
-			$sql = insert_string($table, $columns);
+			$sql = insert_string($table, $colums);
 			$res = $this->conection->query($sql);
 			if($res){
 				return true;
@@ -87,6 +88,17 @@
 			}else{
 				return false;
 			}
+		}
+
+		public function get_where($table,$where){
+			$sql 		= string_get_where($table,$where);
+			$res 		= $this->conection->query($sql);
+			$resultSet  = [];
+			while($rowObj = $res->fetch_object()){
+				$resultSet[] = $rowObj;
+			}
+			mysqli_free_result($res);
+			return $resultSet;
 		}
 
 		public function EjecutarSQL($sql){

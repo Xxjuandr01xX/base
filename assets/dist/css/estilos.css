@@ -9,10 +9,10 @@
 	background-color: #2A95F4;
 }
 .dtp-header{
-	background-color: #0e71b3 !important;
+	background-color: #1a78c2 !important;
 }
 .dtp-date{
-	background-color: #478fbe !important;
+	background-color:  #1a78c2 !important;
 }
 .dtp-select-month-before{
 	color: #fff !important;
@@ -32,6 +32,9 @@
 .selected{
 	color: #fff !important;
 	background-color: #478fbe !important;
+}
+.dtp-select-hour{
+	background-color:  #1a78c2 !important;
 }
 /********************************************/
 

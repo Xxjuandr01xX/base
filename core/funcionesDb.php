@@ -81,6 +81,22 @@
 		return $inicio;
 	}
 	
+
+	function string_get_where($table,$arr){
+		$inicio = "SELECT * FROM $table WHERE ";
+		$where = "";
+		$i = 0;
+		foreach ( $arr as $condition => $value) {
+			$i++;
+			if($i == count($arr)){
+				$where .= $condition." = ".$value;
+			}else{
+				$where .= $condition." = ".$value.", AND ";
+			}
+		}
+		$sql = $inicio.$where;
+		return $sql;
+	}
 	
 
 

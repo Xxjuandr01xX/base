@@ -16,8 +16,14 @@
 			return $_SESSION;
 		}
 
-		public function index($index){
+		public function load($index){
 			return $_SESSION[$index];
+		}
+
+		public function Redirect(){
+			if (!isset($_SESSION) || empty($_SESSION)){
+				header('Location:?op=login/index');
+			}
 		}
 
 	}

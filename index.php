@@ -5,6 +5,7 @@
 	require_once 'core/parametros.php';
 	require_once 'core/session.php';
 	require_once 'core/funciones.php';
+	require_once 'core/funcionesDb.php';
 	require_once 'core/controller.php';
 
 	if(!isset($_GET['op']) || empty($_GET['op'])){
@@ -13,11 +14,10 @@
 		$op = explode('/', $_GET['op']);
 		$controller = $op[0];
 		$accion     = $op[1];
-		$controller_path = $param['CONTROLLERS_PATH'].$controller.'.php';
-		if(!file_exists($controller_path) || empty($_SESSION)){
-			require_once $param['CONTROLLERS_PATH'].'Login.php';
+		if(file_exists('app/controller/'.$controller.'.php') || !empty($_SESSION)){
+			require_once 'app/controller/'.$controller.'.php';
 		}else{
-			require_once $controller_path;
+			require_once 'app/controller/login.php';
 		}
 		$obj = new $controller();
 		if(!method_exists($obj, $accion)){

@@ -11,7 +11,7 @@
             $this->host     = "localhost";       
             $this->user     = "root";
             $this->pass     = "";
-            $this->db       = "prueba";
+            $this->db       = "medica";
             $this->charset  = "utf-8";
             $this->driver   = "mysqli";
         }

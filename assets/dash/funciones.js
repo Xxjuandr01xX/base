@@ -24,7 +24,7 @@ function setAlertToast(container,booblean,text){
                         '<div id = "toastEl" class="toast align-items-center text-white bg-'+text.color+' border-0" role="alert" aria-live="assertive" aria-atomic="true">'+
                             '<div class="d-flex">'+
                                 '<div class="toast-body">'+
-                                    '<span class = "bi-'+text.icon+'"></span> '+
+                                    '<i class = "bi-'+text.icon+'"></i> '+
                                     text.mensaje
                                 '</div>'+
                                 '<button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>'+
@@ -77,18 +77,6 @@ function setSpinnerLoader(options){
                         '<span class="visually-hidden">Loading...</span>'+
                     '</div>';
     $("#"+options.container).html(component);
-    $("#" + options.container).css({
-        "display" : 'none'
-    });
-    if(options.booblean == true){
-        $("#" + options.container).css({
-            "display":'block'
-        });
-    }else{
-        $("#" + options.container).css({
-            "display": 'none'
-        });
-    }
 }
 
 function setGrowingLoader(options){
@@ -126,9 +114,11 @@ function setDropdown(container, title, li){
 }
 
 function setInputText(options){
-    return '<div class = "input-group mb-2 mt-2">'+
-                '<label For="" class = "input-group-text rounded-0"><span class = "bi-'+options.icon+'"></span></label>'+
-                '<input id = "'+options.id+'" type="'+options.type+'" class = "form-control rounded-0" placeholder = "'+options.holder+'" />'+
+    return '<div class = "form-group ">'+
+                '<div class = "input-group mb-2 mt-2">'+
+                    '<label For="" class = "input-group-text"><i class = "bi-'+options.icon+'"></i></label>'+
+                    '<input id = "'+options.id+'" type="'+options.type+'" class = "form-control" placeholder = "'+options.holder+'" />'+
+                '</div>'+
             '</div>';
 }
 
