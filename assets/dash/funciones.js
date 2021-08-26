@@ -11,7 +11,7 @@ function set_visible_modal(id,boolean){
 
 
 function setBsAlert(id,boolean,color,mensaje){
-    const bs_alert = '<div class = " alert alert-' + color + '" role = "alert">' + mensaje+'<div>';
+    const bs_alert = '<div class = " alert rounded-0 shadow alert-' + color + '" role = "alert">' + mensaje+'  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> <div>';
     if(boolean == true){
         $("#" + id).html(bs_alert);
     }else{

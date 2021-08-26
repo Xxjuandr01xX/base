@@ -5,7 +5,7 @@
         <ul class="nav flex-column">
 
           <li class="nav-item">
-            <a class="nav-link active text-light" aria-current="page" href="?op=Proyectos/listado">
+            <a class="nav-link active text-light" aria-current="page" href="?op=Pacientes/index">
               <span data-feather="home"></span>
               <span class="bi-person"></span> Pacientes <span class="bi-toggle2-off"></span>
             </a>
