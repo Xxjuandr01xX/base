@@ -110,9 +110,9 @@
 		foreach ($condition as $campo => $valor) {
 			$x++;
 			if($x == count($condition)){
-				$fin = $campo." = ".$valor;
+				$fin .= $campo." = ".$valor;
 			}else{
-				$fin .= $campo." = ".$valor.", ";
+				$fin .= $campo." = ".$valor.", AND";
 			}
 		}
 		return $inicio.$fin;

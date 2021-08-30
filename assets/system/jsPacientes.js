@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
 	/**
 	 * Interacciones para Gestion de pacientes.
 	 * */
@@ -18,9 +17,10 @@ $(document).ready(function(){
 
 });
 
+
 function toggleSwitchInputs(){
-	document.getElementById('input-male').checked = false;
-	document.getElementById('input-female').checked = false;
+	//document.getElementById('input-male').checked = false;
+	//document.getElementById('input-female').checked = false;
 	$("#input-male").on('change',function(e){
 		e.preventDefault();
 		if(document.getElementById('input-male').checked == true){
@@ -51,6 +51,41 @@ function getCheckedValue(){
 	return document.querySelector('input[type=checkbox]:checked').value;
 }
 
+function editarPaciente(id){
+	$.ajax({
+		"method" : "POST",
+		"url"    : "?op=Pacientes/updatePaciente",
+		"data"   : {
+			"id"      : id,
+			"nom"     : $("#nom").val(),
+			"ape"     : $("#ape").val(),
+			"ced"     : $("#ced_ide").val(),
+			"cel"     : $("#cell_input").val(),
+			"email"   : $("#email").val(),
+			"sex"     : getCheckedValue(),
+			"fec_nac" : $("#fec_nac").val(),
+			"dir"     : $("#dir").val()
+ 		},
+		success : function(resp){
+			if(resp == '1'){
+				swal({
+					"title" : "Listo !",
+					"type"  : "success",
+					"text"  : "Operacion Realizada con Exito !"
+				});
+				window.location.href = "?op=Pacientes/Index";
+			}else{
+				swal({
+					"title" : "Oop´s",
+					"type"  : "error",
+					"text"  : "Error al Realizar la Operacion."
+				});
+				console.log(resp);
+			}
+		}
+	})
+}
+
 function agregarNuevoPaciente(){
 	$.ajax({
 		"method" : "POST",
@@ -67,12 +102,24 @@ function agregarNuevoPaciente(){
  		},
 		success : function(resp){
 			if(resp == '1'){
-				setBsAlert('al',true,'success','<span class = "bi-check"></span> Operacion Realizada con Exito');
+				swal({
+					"title" : "Listo !",
+					"type"  : "success",
+					"text"  : "Operacion Realizada con Exito !"
+				});
 				window.location.href = "?op=Pacientes/Index";
 			}else if(resp = "duplicate"){
-				setBsAlert('al',true,'warning','<span class = "bi-exclamation"></span> Ya la Persona se Encuentra Registrada en el Sistema.');
+				swal({
+					"title" : "Oop´s",
+					"type"  : "warning",
+					"text"  : "El paciente ya se encuentra registrado en el sistema."
+				});
 			}else{
-				setBsAlert('al',true,'danger','<span class = "bi-close"></span> Error al Realizar la Operacion.');
+				swal({
+					"title" : "Oop´s",
+					"type"  : "error",
+					"text"  : "Error al Realizar la Operacion."
+				});
 				console.log(resp);
 			}
 		}
@@ -94,11 +141,15 @@ let setDataTablePacientes = () => {
 	});
 }
 
+let openPacientes = () => {
+	window.location.href = "?op=Pacientes/index";
+}
+
 let openNewPaciente = () => {
 	window.location.href = "?op=Pacientes/nuevo";
 }
 
-let openEditarPaciente = (id) => {
+let formEditar = (id) => {
 	window.location.href = "?op=Pacientes/editar&cod="+id;
 }
 
@@ -110,6 +161,7 @@ let eliminarPaciente = (id) => {
 				"title" : "Listo !",
 				"text"  : "Operacion realizada con exito !"
 			});
+			setDataTablePacientes();
 		}else{
 			swal({
 				"type"  : "error",

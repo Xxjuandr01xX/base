@@ -1,6 +1,6 @@
 <?php
 	/**
-	 * 
+	 * Clase para Gestionar las Consultas a las tablas de medicos y pacientes.
 	 */
 	class personasModel extends Model{
 		
@@ -20,6 +20,12 @@
 			return $nombre;
 		}
 
+		public function getBYId($id){
+			return $this->get_where('med_personas',[
+				"id" => "'$id'"
+			]);
+		}
+
 		public function insert_paciente($nom,$ape,$ced,$cel,$email,$sex,$fec_nac,$dir){
 			return $this->insert('med_personas',[
 				"id" 		=> "NULL",
@@ -31,13 +37,34 @@
 				"direccion" => "'$dir'",
 				"sexo" 		=> "'$sex'",
 				"fec_nac"   => "'$fec_nac'",
-				"id_tipo"   => "'2'"
+				"id_tipo"   => "2"
 			]);
 		}
 
-		public function verificar_persona($ced_ide){
-			$persona = $this->get_where('med_personas', ["ced_ide" => "'$ced_ide'"]);
-			return count($persona);
+		public function verify($ced_ide){
+			$sql = "SELECT * FROM med_persona WHERE ced_ide = '$ced_ide'";
+			$res = $this->get_conection()->query($sql);
+			return $res;
+		}
+
+		public function elPaciente($id){
+			return $this->delete("med_personas", ["id" => "$id"]);
+		}
+
+		public function updatePaciente($id,$nom,$ape,$ced,$cel,$email,$sex,$fecha,$dir){
+			return $this->update('med_personas',[
+				"nombre"    => "'$nom'",
+				"ced_ide" 	=> "'$ced'",
+				"nombre" 	=> "'$nom'",
+				"apellido"  => "'$ape'",
+				"correo"    => "'$email'",
+				"telefono"  => "'$cel'",
+				"direccion" => "'$dir'",
+				"sexo" 		=> "'$sex'",
+				"fec_nac"   => "'$fecha'"
+			],[
+				"id" => "'$id'"
+			]);
 		}
 
 

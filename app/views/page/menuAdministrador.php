@@ -12,7 +12,7 @@
           </li>
 
            <li class="nav-item ">
-            <a class="nav-link active text-light" aria-current="page" href="?op=Gerencias/listado">
+            <a class="nav-link active text-light" aria-current="page" href="?op=Medicos/index">
               <span data-feather="home"></span>
               <span class="bi-person"></span> Medicos <span class="bi-toggle2-off"></span>
             </a>

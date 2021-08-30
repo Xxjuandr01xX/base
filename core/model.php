@@ -81,7 +81,7 @@
 			/**
 			 * Funcion para Actualizar un registro en la db.
 			 */
-			$sql = update_string($table, $columns, $condition);
+			$sql = update_string($table, $colums, $condition);
 			$res = $this->conection->query($sql);
 			if($res){
 				return true;
