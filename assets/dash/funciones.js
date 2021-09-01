@@ -188,4 +188,21 @@ function ajaxModalList(id, rows, head){
     return table;
 }
 
+function switch_on_off(idOn, idOff){
+    //document.getElementById('input-male').checked = false;
+    //document.getElementById('input-female').checked = false;
+    $("#"+ idOn).on('change',function(e){
+        e.preventDefault();
+        if(document.getElementById(idOn).checked == true){
+            document.getElementById(idOff).checked = false;
+        }
+    });
+    $("#"+ idOff).on('change',function(e){
+        e.preventDefault();
+        if(document.getElementById(idOff).checked == true){    
+            document.getElementById(idOn).checked = false;
+        }
+    });
+}
+
 

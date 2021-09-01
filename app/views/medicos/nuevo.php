@@ -10,11 +10,10 @@
           <div class="col-md-10">
             <div id="al"></div>
             <div class="card shadow rounded-0">
-              <div class="card-header bg-primary text-white rounded-0">
-                <h4><?php echo $titulo; ?></h4>
-              </div>
+
               <div class="card-body">
-               
+                <h3 class="text-center text-primary"><?php echo $titulo;?></h3> 
+                <br>
                <div class="row clearfix d-flex justify-content-center mb-2">
                  <div class="col-md-5">
                    <div class="form-group">
@@ -86,7 +85,7 @@
                    <div class="form-group">
                      <div class="input-group">
                        <label for="" class="input-group-text"><span class="bi-calendar-fill text-primary"></span></label>
-                       <input type="text" id="fec_nac" class="form-control" placeholder="XX/XX/XXXX">
+                       <input type="text" id="fec_nac" class="form-control" placeholder="Fecha de Nacimiento">
                      </div>
                    </div>
                  </div>
@@ -103,9 +102,47 @@
                  </div>
                </div>
 
+               <div class="row clearfix d-flex justify-content-center mb-3">
+                 <div class="col-md-5">
+                   <div class="form-group">
+                     <div class="input-group">
+                      <label for="" class="input-group-text">
+                        <span class="bi-person text-primary"></span>
+                      </label>
+                      <input type="text" id="username" class="form-control" placeholder="Ingrese su nombre usuario">
+                     </div>
+                   </div>
+                 </div>
+                 <div class="col-md-5">
+                   <div class="form-group">
+                     <div class="input-group">
+                       <label for="" class="input-group-text"><span class="bi-lock-fill text-primary"></span></label>
+                       <input type="text"  id="password" class="form-control" placeholder="Contraseña de usuario">
+                     </div>
+                   </div>
+                 </div>
+               </div>
+
+               <div class="row clearfix d-flex justify-content-center mb-3">
+                 <div class="col-md-10">
+                   <div class="form-group">
+                      <div class="input-group">
+                        <label for="" class="input-group-text"><span class="bi-check text-primary"></span></label>
+                        <select  id="rol" class="form-control">
+                          <?php foreach($rol as $roles){?>
+                            <?php if($roles->id != 3){ ?>
+                              <option value="<?php echo $roles->id; ?>"><?php echo $roles->des_rol;?></option>
+                            <?php }else{ } ?>
+                          <?php } ?>
+                        </select>
+                      </div>
+                   </div>
+                 </div>
+               </div>
+
                <div class="row clearfix d-flex justify-content-center mb-3 mt-3">
                   <div class="col-md-10">
-                      <button id = "btn-add-paciente" class="btn btn-primary rounded-0 w-100"><span class="bi-plus"></span> Registra</button>
+                      <button id = "btn-add-medico" class="btn btn-primary rounded-0 w-100"><span class="bi-plus"></span> Registra</button>
                   </div>
                </div>
 
@@ -121,10 +158,8 @@
     <div id="alert-container"></div>
 
     <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/system/jsPacientes.js"></script>
+    <script src="assets/system/jsMedicos.js"></script>
 
-    <script>
-      toggleSwitchInputs();
-    </script>
+    <script></script>
   </body>
 </html>

@@ -8,6 +8,10 @@
 	 		return $this->get_all('med_usuarios');
 	 	}
 
+	 	public function getRoleUsuarios(){
+	 		return $this->get_all('med_rol');
+	 	}
+
 	 	public function userVerify($user,$pass){
 	 		$sql = $this->EjecutarSQL("SELECT * FROM med_usuarios WHERE username = '$user' AND pwd = PASSWORD('$pass')");
 	 		if(count($sql) < 1){
