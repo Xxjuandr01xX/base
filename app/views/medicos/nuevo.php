@@ -141,7 +141,10 @@
                </div>
 
                <div class="row clearfix d-flex justify-content-center mb-3 mt-3">
-                  <div class="col-md-10">
+                  <div class="col-md-5">
+                      <button  onclick = "openMedicos();" class="btn btn-primary rounded-0 w-100"><span class="bi-home-fill"></span> Ir a Medicos</button>
+                  </div>
+                  <div class="col-md-5">
                       <button id = "btn-add-medico" class="btn btn-primary rounded-0 w-100"><span class="bi-plus"></span> Registra</button>
                   </div>
                </div>

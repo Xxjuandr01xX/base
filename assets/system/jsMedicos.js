@@ -68,6 +68,25 @@ function registrarNuevoMedico(){
 		},
 		success  : function(resp){
 			console.log(resp);
+			if(resp == "1"){
+				swal({
+					"title" : "Listo !",
+					"type"   : "success",
+					"text"   : "Operacion Realizada con Exito !"
+				});
+			}else if(resp == "duplicate"){
+				swal({
+					"title"  : "Oop´s",
+					"type"   : "warning",
+					"text"   : "El Medico ya se Encuentra Registrado"
+				});
+			}else{
+				swal({
+					"title"  : "Oop´s",
+					"type"   : "danger",
+					"text"   : "Error al Realizar la Operacion"
+				});
+			}
 			$("#al").html(" ");
 		},
 	})

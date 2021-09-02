@@ -69,15 +69,15 @@
 				"telefono"  => "'$cel'",
 				"direccion" => "'$dir'",
 				"sexo" 		=> "'$sex'",
-				"fec_nac"   => "'$fecha'",
+				"fec_nac"   => "'$fec_nac'",
 				"id_tipo"   => "1"
 			]);
 			if($persona){
-				$id = mysqli_insert_id($this->get_connection());
+				$id = mysqli_insert_id($this->get_conection());
 				$usuario = $this->insert('med_usuarios',[
 					"id" 			=> "NULL",
 					"id_persona" 	=> "'$id'",
-					"username"  	=> "'$username'",
+					"username"  	=> "'$user'",
 					"pwd"  			=> "PASSWORD('$pass')",
 					"rol" 			=> "'$rol'"
 				]);

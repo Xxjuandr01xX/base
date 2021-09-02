@@ -29,14 +29,13 @@
 		}
 
 		public function newMedico(){
-			$id      = filter_input(INPUT_POST, 'id');
 			$nom  	 = filter_input(INPUT_POST, 'nom');
 			$ape 	 = filter_input(INPUT_POST, 'ape');
 			$ced 	 = filter_input(INPUT_POST, 'ced');
-			$cel 	 = filter_input(INPUT_POST, 'cel');
-			$email 	 = filter_input(INPUT_POST, 'email');
+			$cel 	 = filter_input(INPUT_POST, 'cell');
+			$email 	 = filter_input(INPUT_POST, 'mail');
 			$sex 	 = filter_input(INPUT_POST, 'sex');
-			$fec_nac = filter_input(INPUT_POST, 'fec_nac');
+			$fec_nac = filter_input(INPUT_POST, 'nac');
 			$dir     = filter_input(INPUT_POST, 'dir');
 			$fecha   = dateToSql($fec_nac);
 			$user    = filter_input(INPUT_POST,'user');
@@ -47,7 +46,7 @@
 			$resp = ""; 
 
 			if($per->verify($ced) == false){
-				if($per->insertMedico($nom, $ape , $ced, $cel, $email, $sex, $fec_nac, $dir, $user, $pass, $rol) == true){
+				if($per->insertMedico($nom, $ape , $ced, $cel, $email, $sex, $fecha, $dir, $user, $pass, $rol) == true){
 					$resp = "1";
 				}else{
 					$resp = "0";
@@ -57,5 +56,6 @@
 			}
 			echo $resp;
  		}
+
 	}
 ?>
